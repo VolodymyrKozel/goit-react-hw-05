@@ -1,0 +1,86 @@
+.list {
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.item {
+  position: relative;
+  overflow: hidden;
+}
+@media screen and (min-width: 768px) {
+  .item {
+    width: calc((100% - 16px) / 2);
+  }
+}
+@media screen and (min-width: 1100px) {
+  .item {
+    width: calc((100% - 16px * 2) / 3);
+  }
+}
+@media screen and (min-width: 1440px) {
+  .item {
+    width: calc((100% - 16px * 3) / 4);
+  }
+}
+.poster {
+  width: 100%;
+  overflow: hidden;
+  transition: transform 500ms ease-in;
+}
+.top {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  padding: 8px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: hsla(0, 0%, 98%, 0.5);
+}
+.vote {
+  background-color: hsl(0, 0%, 98%);
+  padding: 8px;
+  border-radius: 8px;
+  transition: background-color 400ms ease-in, color 400ms ease;
+}
+.vote:hover {
+  background-color: hsl(0, 0%, 50%);
+  color: gold;
+}
+.vote:hover .icon {
+  color: gold;
+}
+.icon {
+  margin: 0 4px;
+}
+.wrapper {
+  padding: 32px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transform: translateY(100%);
+  background-color: var(--container-color);
+  transition: transform 500ms ease-in;
+}
+.item:hover .wrapper {
+  transform: translateY(0);
+}
+.item:hover .poster {
+  transform: scale(1.05);
+}
+.title {
+  text-align: center;
+  font-size: 24px;
+  color: var(--title-color);
+  margin-bottom: 16px;
+}
+.overview {
+  color: var(--text-color);
+  margin-bottom: 16px;
+}
+.date {
+  margin-bottom: 16px;
+}

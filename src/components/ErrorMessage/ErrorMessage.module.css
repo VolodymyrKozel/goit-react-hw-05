@@ -1,0 +1,14 @@
+.container {
+  padding: 32px;
+  margin-top: 32px;
+  margin: 0 auto;
+  width: fit-content;
+}
+.heading {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.text {
+  margin-bottom: 16px;
+}

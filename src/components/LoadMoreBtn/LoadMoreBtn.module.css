@@ -1,0 +1,26 @@
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1rem;
+  line-height: 1.5;
+  padding: 0.5em 1em;
+  justify-content: center;
+  color: var(--white-color);
+  font-weight: var(--font-semi-bold);
+  transition: box-shadow, 400ms transform 400ms;
+  background-color: var(--first-color);
+  border-radius: 4px;
+  margin: 1em auto;
+}
+.btn .icon {
+  fill: var(--white-color);
+}
+
+.btn:is(:hover, :focus) {
+  box-shadow: 0 4px 32px hsla(230, 72%, 32%, 0.4);
+}
+
+.btn:is(:hover, :focus) .icon {
+  transform: translateX(4px);
+}

@@ -1,0 +1,16 @@
+.header {
+  padding: 32px 0;
+  margin-bottom: 32px;
+  background-color: var(--first-color);
+}
+.logo {
+  margin-right: 32px;
+}
+.nav {
+  display: flex;
+  gap: 16px;
+  color: var(--white-color);
+}
+.buildLinkClass {
+  color: var(--white-color);
+}

@@ -1,0 +1,12 @@
+.title {
+  color: var(--title-color);
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+}
+.text {
+  margin-bottom: 16px;
+}
+.noReviews {
+  margin: 0 0 32px 0;
+  text-align: center;
+}
