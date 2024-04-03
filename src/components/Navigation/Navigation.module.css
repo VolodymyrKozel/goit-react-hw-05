@@ -5,12 +5,31 @@
 }
 .logo {
   margin-right: 32px;
+  color: var(--white-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+.iconLogo {
+  width: 32px;
+  height: auto;
 }
 .nav {
   display: flex;
+  align-items: center;
   gap: 16px;
   color: var(--white-color);
 }
-.buildLinkClass {
+.link {
+  position: relative;
+  font-weight: 700;
   color: var(--white-color);
+  font-size: 1.2rem;
+  border-radius: 8px;
+  letter-spacing: 0.03em;
+  padding-bottom: 8px;
+}
+.active {
+  color: var(--title-color);
 }

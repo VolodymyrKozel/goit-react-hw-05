@@ -1,26 +1,23 @@
 import { NavLink } from "react-router-dom";
 import clsx from "clsx";
 import css from "./Navigation.module.css";
-
-const buildLinkClass = ({ isActive }) => {
-  return clsx(css.link, isActive && css.active);
-};
+import { SiThemoviedatabase } from "react-icons/si";
 
 export default function Navigation() {
+  const buildLinkClass = ({ isActive }) => {
+    return clsx(css.link, isActive && css.active);
+  };
   return (
     <header className={css.header}>
       <div className="container flex">
         <p className={css.logo}>
-          <span role="img" aria-label="computer icon">
-            💻
-          </span>{" "}
-          Movies
+          <SiThemoviedatabase className={css.iconLogo} />
         </p>
         <nav className={css.nav}>
-          <NavLink to="/" className={css.buildLinkClass}>
+          <NavLink to="/" className={buildLinkClass}>
             Home
           </NavLink>
-          <NavLink to="/movies" className={css.buildLinkClass}>
+          <NavLink to="/movies" className={buildLinkClass}>
             Movies
           </NavLink>
         </nav>

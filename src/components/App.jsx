@@ -3,8 +3,6 @@ import { Routes, Route } from "react-router-dom";
 import NotFound from "../pages/NotFoundPage/NotFoundPage";
 import Navigation from "./Navigation/Navigation";
 import Loader from "../components/Loader/Loader";
-import css from "./App.module.css";
-import { getTrending } from "../API";
 
 const Home = lazy(() => import("../pages/HomePage/HomePage"));
 const Movies = lazy(() => import("../pages/MoviesPage/MoviesPage"));

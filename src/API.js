@@ -14,18 +14,18 @@ const options = {
   params: paramsRequest,
 };
 export async function getSearch() {
-  const response = axios.get("search/movie", options);
+  const response = await axios.get("search/movie", options);
   return response;
 }
 export async function getPopular() {
-  const response = axios.get("movie/popular", options);
+  const response = await axios.get("movie/popular", options);
   return response;
 }
 export async function getTrending() {
-  const response = axios.get("trending/movie/day", options);
+  const response = await axios.get("trending/movie/day", options);
   return response;
 }
 export async function getMovie(MovieId) {
-  const response = axios.get(`movie/${MovieId}`, options);
+  const response = await axios.get(`movie/${MovieId}`, options);
   return response;
 }

@@ -1,0 +1,14 @@
+.container {
+  margin: 0 auto;
+  padding: 0 16px;
+}
+.title {
+  margin-bottom: 32px;
+  font-size: 48px;
+  text-align: center;
+  color: var(--title-color);
+}
+.accent {
+  font-style: italic;
+  color: var(--first-color);
+}
