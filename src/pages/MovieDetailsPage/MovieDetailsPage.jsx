@@ -27,8 +27,8 @@ export default function MovieDetailsPage() {
               <img
                 className={css.poster}
                 src={
-                  data.poster_path === null
-                    ? "no-image.webp"
+                  data.poster_path === undefined || data.poster_path === null
+                    ? "/no-image.webp"
                     : urlImg + data.poster_path
                 }
                 alt={data.original_title}
@@ -64,7 +64,7 @@ export default function MovieDetailsPage() {
               <ul className={css.list}>
                 {data.production_companies?.map((item) => (
                   <li className={css.itemCompany} key={item.id}>
-                    {item.logo_path ? (
+                    {item.logo_path !== true ? (
                       <img
                         className={css.companyImg}
                         src={urlImg + item.logo_path}

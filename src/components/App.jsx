@@ -3,6 +3,8 @@ import { Routes, Route } from "react-router-dom";
 import NotFound from "../pages/NotFoundPage/NotFoundPage";
 import Navigation from "./Navigation/Navigation";
 import Loader from "../components/Loader/Loader";
+import { IoIosArrowUp } from "react-icons/io";
+import ScrollToTop from "react-scroll-to-top";
 
 const Home = lazy(() => import("../pages/HomePage/HomePage"));
 const Movies = lazy(() => import("../pages/MoviesPage/MoviesPage"));
@@ -27,6 +29,11 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
+      <ScrollToTop
+        smooth
+        component={<IoIosArrowUp color="#000" />}
+        className="circle-ripple"
+      />
     </>
   );
 }

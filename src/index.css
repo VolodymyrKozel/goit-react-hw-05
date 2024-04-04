@@ -114,3 +114,34 @@ button {
     max-width: 1440px;
   }
 }
+.scroll-to-top {
+  width: 2.5em !important;
+  height: 2.5em !important;
+  border-radius: 50% !important;
+  background-color: var(--first-color);
+  color: var(--white-color) !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.circle-ripple {
+  position: fixed;
+  background-color: var(--first-color);
+  width: 2.5em;
+  height: 2.5em;
+  border-radius: 50%;
+  -webkit-animation: ripple 1s linear infinite;
+  animation: ripple 1s linear infinite;
+}
+
+@-webkit-keyframes ripple {
+  0% {
+    box-shadow: 0 0 0 0 hsla(230, 62%, 56%, 0.3),
+      0 0 0 0.4em hsla(230, 62%, 56%, 0.3), 0 0 0 0.8em hsla(230, 62%, 56%, 0);
+  }
+  50% {
+    box-shadow: 0 0 0 0.8em hsla(230, 62%, 56%, 0.3),
+      0 0 0 0.4em hsla(230, 62%, 56%, 0.3), 0 0 0 0.8em hsla(230, 62%, 56%, 0);
+  }
+}
