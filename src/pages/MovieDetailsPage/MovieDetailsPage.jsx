@@ -1,5 +1,5 @@
 import { Link, Outlet, useParams, useLocation } from "react-router-dom";
-import { Suspense } from "react";
+import { Suspense, useRef } from "react";
 import Loader from "../../components/Loader/Loader";
 import { BackLink } from "../../components/BackLink/BackLink";
 /* import ErrorMessage from "../../components/ErrorMessage"; */
@@ -13,7 +13,7 @@ const urlImg = "https://image.tmdb.org/t/p/w500/";
 export default function MovieDetailsPage() {
   const { movieId } = useParams();
   const location = useLocation();
-  const backLinkHref = location.state?.from ?? "/";
+  const backLinkHref = useRef(location.state?.from ?? "/");
   const { data, loading, error } = useFetch(`movie/${movieId}`);
   return (
     <div className="container">
@@ -23,7 +23,7 @@ export default function MovieDetailsPage() {
         <>
           <div className={css.container}>
             <div className={css.imgContainer}>
-              <BackLink to={backLinkHref}>Back</BackLink>
+              <BackLink to={backLinkHref.current}>Back</BackLink>
               <img
                 className={css.poster}
                 src={

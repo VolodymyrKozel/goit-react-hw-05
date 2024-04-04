@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import Loader from "../../components/Loader/Loader";
 import { MdOutlineImageNotSupported } from "react-icons/md";
@@ -6,8 +6,8 @@ import css from "./MovieCast.module.css";
 const url = "https://image.tmdb.org/t/p/w500/";
 
 export default function MovieCast() {
-  const { state } = useLocation();
-  const { data, loading, error } = useFetch(state.url);
+  const { movieId } = useParams();
+  const { data, loading, error } = useFetch(`movie/${movieId}/credits`);
   return (
     <div className="container">
       {loading && <Loader />}

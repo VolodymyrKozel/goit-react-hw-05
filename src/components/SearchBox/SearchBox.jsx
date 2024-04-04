@@ -8,11 +8,11 @@ const SearchBox = ({ setSearchParams }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSearchParams({ query });
     if (query.trim() === "") {
       toast.error("Please enter search term!");
       return;
     }
+    setSearchParams({ query });
   };
 
   const handleSearchParams = ({ target: { value } }) => {

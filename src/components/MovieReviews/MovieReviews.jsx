@@ -1,12 +1,12 @@
-import css from "./MovieReviews.module.css";
-
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import Loader from "../../components/Loader/Loader";
 
+import css from "./MovieReviews.module.css";
+
 export default function MovieReviews() {
-  const { state } = useLocation();
-  const { data, loading, error } = useFetch(state.url);
+  const { movieId } = useParams();
+  const { data, loading, error } = useFetch(`movie/${movieId}/reviews`);
   return (
     <div className="container">
       {loading && <Loader />}
