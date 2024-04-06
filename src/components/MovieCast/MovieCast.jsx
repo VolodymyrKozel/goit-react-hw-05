@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
-import useFetch from "../../hooks/useFetch";
+import { useEffect, useState } from "react";
+import { getCast } from "../../services/api";
 import Loader from "../../components/Loader/Loader";
 import { MdOutlineImageNotSupported } from "react-icons/md";
 import css from "./MovieCast.module.css";
@@ -7,15 +8,34 @@ const url = "https://image.tmdb.org/t/p/w500/";
 
 export default function MovieCast() {
   const { movieId } = useParams();
-  const { data, loading, error } = useFetch(`movie/${movieId}/credits`);
+  const [cast, setCasts] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+  useEffect(() => {
+    if (!movieId) return;
+    const fetchData = async () => {
+      try {
+        setError(null);
+        setLoading(true);
+        const { cast } = await getCast(movieId);
+        setCasts(cast);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, [movieId]);
+
   return (
     <div className="container">
       {loading && <Loader />}
-      {error && <p>Error</p>}
+      {error && <p>Ops! Something went wrong</p>}
 
-      {data.cast && (
+      {cast && (
         <ul className={css.list}>
-          {data.cast.map((item) => (
+          {cast.map((item) => (
             <li className={css.item} key={item.name}>
               <div className={css.imgWrapper}>
                 {item.profile_path ? (

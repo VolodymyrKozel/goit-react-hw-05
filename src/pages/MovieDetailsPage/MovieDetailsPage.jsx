@@ -1,10 +1,10 @@
 import { Link, Outlet, useParams, useLocation } from "react-router-dom";
-import { Suspense, useRef } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import Loader from "../../components/Loader/Loader";
 import { BackLink } from "../../components/BackLink/BackLink";
 /* import ErrorMessage from "../../components/ErrorMessage"; */
 import { HiTrophy, HiUserGroup, HiHandThumbUp } from "react-icons/hi2";
-import useFetch from "../../hooks/useFetch";
+import { getMovieDetails } from "../../services/api";
 
 import css from "./MovieDetailsPage.module.css";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
@@ -14,12 +14,31 @@ export default function MovieDetailsPage() {
   const { movieId } = useParams();
   const location = useLocation();
   const backLinkHref = useRef(location.state?.from ?? "/");
-  const { data, loading, error } = useFetch(`movie/${movieId}`);
+  const [movieDetails, setMovieDetails] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+  useEffect(() => {
+    if (!movieId) return;
+    const fetchData = async () => {
+      try {
+        setError(null);
+        setLoading(true);
+        const res = await getMovieDetails(movieId);
+        setMovieDetails(res);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, [movieId]);
+
   return (
     <div className="container">
       {loading && <Loader />}
       {error && <ErrorMessage error={error} backLinkHref={backLinkHref} />}
-      {data && !error && !loading && (
+      {movieDetails && !error && !loading && (
         <>
           <div className={css.container}>
             <div className={css.imgContainer}>
@@ -27,42 +46,48 @@ export default function MovieDetailsPage() {
               <img
                 className={css.poster}
                 src={
-                  data.poster_path === undefined || data.poster_path === null
+                  movieDetails.poster_path === undefined ||
+                  movieDetails.poster_path === null
                     ? "/no-image.webp"
-                    : urlImg + data.poster_path
+                    : urlImg + movieDetails.poster_path
                 }
-                alt={data.original_title}
+                alt={movieDetails.original_title}
               />
             </div>
             <div className={css.wrapper}>
-              <h2 className={css.movieTitle}>{data.original_title}</h2>
+              <h2 className={css.movieTitle}>{movieDetails.original_title}</h2>
               <p className={css.overview}>
-                {data.overview ? data.overview : "no discription to this film"}
+                {movieDetails.overview
+                  ? movieDetails.overview
+                  : "no discription to this film"}
               </p>
               <p className={css.text}>
-                <span className={css.accent}> Budget: </span> {data.budget} $
+                <span className={css.accent}> Budget: </span>{" "}
+                {movieDetails.budget} $
               </p>
               <p className={css.text}>
-                <span className={css.accent}> Runtime:</span> {data.runtime}{" "}
-                min.
+                <span className={css.accent}> Runtime:</span>{" "}
+                {movieDetails.runtime} min.
               </p>
               <p className={css.text}>
-                <span className={css.accent}> Status: </span> {data.status}
+                <span className={css.accent}> Status: </span>{" "}
+                {movieDetails.status}
               </p>
               <p className={css.text}>
-                <span className={css.accent}> Tagline:</span> {data.tagline}
+                <span className={css.accent}> Tagline:</span>{" "}
+                {movieDetails.tagline}
               </p>
-              <p className={css.date}>{data.release_date}</p>
+              <p className={css.date}>{movieDetails.release_date}</p>
 
               <h3 className={css.title}>Genres:</h3>
               <ul className={css.list}>
-                {data.genres?.map((item) => (
+                {movieDetails.genres?.map((item) => (
                   <li key={item.id}>{item.name}</li>
                 ))}
               </ul>
               <h3 className={css.title}>Production companies: </h3>
               <ul className={css.list}>
-                {data.production_companies?.map((item) => (
+                {movieDetails.production_companies?.map((item) => (
                   <li className={css.itemCompany} key={item.id}>
                     {item.logo_path !== true ? (
                       <img
@@ -82,14 +107,14 @@ export default function MovieDetailsPage() {
                   aria-label="vote average"
                   title="vote average">
                   <HiTrophy className={css.icon} />
-                  {data.vote_average}
+                  {movieDetails.vote_average}
                 </p>
                 <p className={css.vote} title="vote count">
-                  <HiUserGroup className={css.icon} /> {data.vote_count}
+                  <HiUserGroup className={css.icon} /> {movieDetails.vote_count}
                 </p>
                 <p className={css.vote} title="popularity">
                   <HiHandThumbUp className={css.icon} />
-                  {data.popularity}
+                  {movieDetails.popularity}
                 </p>
               </div>
             </div>

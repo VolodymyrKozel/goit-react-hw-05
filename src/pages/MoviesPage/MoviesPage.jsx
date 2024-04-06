@@ -19,7 +19,10 @@ export default function MoviesPage() {
   useEffect(() => {
     const currentQuery = searchParams.get("query");
 
-    if (!currentQuery) return;
+    if (!currentQuery) {
+      setUrl("");
+      return;
+    }
     if (url !== `search/movie?${searchParams}`) {
       setPage(1);
     }
@@ -36,7 +39,7 @@ export default function MoviesPage() {
       {url !== "" && data && <MovieList movies={data} />}
       {error && <ErrorMessage error={"error"} />}
       {loading && <Loader />}
-      {totalPages > 1 && page < totalPages ? (
+      {totalPages > 1 && page < totalPages && url !== "" ? (
         <LoadMoreBtn handleLoadMore={handleLoadMore} loading={loading} />
       ) : null}
     </div>
