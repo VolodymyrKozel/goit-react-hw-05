@@ -28,6 +28,7 @@ export default function MoviesPage() {
     }
     setUrl(`search/movie?${searchParams}`);
   }, [searchParams]);
+
   return (
     <div className={css.container}>
       <h1 className={css.title}>

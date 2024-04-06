@@ -48,17 +48,5 @@ export default function useFetch(url, page = 1) {
     fetchData();
   }, [url, page]);
 
-  const reFetch = async () => {
-    try {
-      setError(null);
-      setLoading(true);
-      const res = await axios.get(url);
-      setData(res.data);
-    } catch (error) {
-      setError(error);
-    } finally {
-      setLoading(false);
-    }
-  };
-  return { data, loading, error, reFetch, totalPages };
+  return { data, loading, error, totalPages };
 }

@@ -16,6 +16,15 @@ const options = {
   params: paramsRequest,
 };
 
+export const getTrendingMovies = async () => {
+  const { data } = await instance.get("trending/movie/day", options);
+  return data;
+};
+export const getMovies = async (query) => {
+  const { data } = await instance.get(`search/movie?query=${query}`, options);
+  return data;
+};
+
 export const getCast = async (movieId) => {
   const { data } = await instance.get(`movie/${movieId}/credits`, options);
 

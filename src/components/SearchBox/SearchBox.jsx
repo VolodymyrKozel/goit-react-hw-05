@@ -8,7 +8,6 @@ const SearchBox = ({ setSearchParams }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target);
     if (query.trim() === "") {
       toast.error("Please enter search term!");
       return;
