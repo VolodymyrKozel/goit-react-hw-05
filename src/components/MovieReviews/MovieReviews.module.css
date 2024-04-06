@@ -6,7 +6,7 @@
 .title {
   color: var(--title-color);
   font-size: 2rem;
-  margin-bottom: 32px;
+  margin: 32px 0;
   text-align: center;
 }
 .text {

@@ -1,13 +1,14 @@
-import { Link, Outlet, useParams, useLocation } from "react-router-dom";
+import { NavLink, Outlet, useParams, useLocation } from "react-router-dom";
 import { Suspense, useEffect, useRef, useState } from "react";
 import Loader from "../../components/Loader/Loader";
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import { BackLink } from "../../components/BackLink/BackLink";
 /* import ErrorMessage from "../../components/ErrorMessage"; */
 import { HiTrophy, HiUserGroup, HiHandThumbUp } from "react-icons/hi2";
 import { getMovieDetails } from "../../services/api";
 
 import css from "./MovieDetailsPage.module.css";
-import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
+import clsx from "clsx";
 const urlImg = "https://image.tmdb.org/t/p/w500/";
 
 export default function MovieDetailsPage() {
@@ -34,6 +35,9 @@ export default function MovieDetailsPage() {
     fetchData();
   }, [movieId]);
 
+  const buildLinkClass = ({ isActive }) => {
+    return clsx(css.link, isActive && css.active);
+  };
   return (
     <div className="container">
       {loading && <Loader />}
@@ -123,20 +127,20 @@ export default function MovieDetailsPage() {
             <h2 className={css.movieTitle}>Aditional information</h2>
             <ul className={css.linkList}>
               <li className={css.linkItem}>
-                <Link
-                  className={css.link}
+                <NavLink
+                  className={buildLinkClass}
                   to="cast"
                   state={{ url: `movie/${movieId}/credits` }}>
                   Cast
-                </Link>
+                </NavLink>
               </li>
               <li className={css.linkItem}>
-                <Link
-                  className={css.ink}
+                <NavLink
+                  className={buildLinkClass}
                   to="reviews"
                   state={{ url: `movie/${movieId}/reviews` }}>
                   Review
-                </Link>
+                </NavLink>
               </li>
             </ul>
           </div>

@@ -114,6 +114,12 @@ button {
     max-width: 1440px;
   }
 }
+.tab-container {
+  /*   border: 1px solid var(--border-color);
+  border-radius: 8px; */
+  padding: 16px;
+  background-color: var(--container-color);
+}
 .scroll-to-top {
   width: 2.5em !important;
   height: 2.5em !important;

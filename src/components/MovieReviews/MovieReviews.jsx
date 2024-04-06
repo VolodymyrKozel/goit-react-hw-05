@@ -28,7 +28,7 @@ export default function MovieReviews() {
   }, [movieId]);
 
   return (
-    <div className="container">
+    <div className="container tab-container">
       {loading && <Loader />}
       {error && <p>Ops! Something went wrong</p>}
       {reviews && reviews.results.length ? (

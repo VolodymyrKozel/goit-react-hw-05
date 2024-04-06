@@ -29,7 +29,7 @@ export default function MovieCast() {
   }, [movieId]);
 
   return (
-    <div className="container">
+    <div className="container tab-container">
       {loading && <Loader />}
       {error && <p>Ops! Something went wrong</p>}
 
