@@ -18,7 +18,30 @@ The Movie Explorer App is a comprehensive platform for exploring, discovering, a
 
 - **Responsive Design:** The app is designed to be responsive, ensuring optimal viewing and usability across devices such as desktops, tablets, and smartphones.
 
-- **Bookmarking and Favorites:** Users can bookmark their favorite movies and create personalized lists for easy access and tracking of watched films.
-
 - **Integrated APIs:** The app integrates with movie databases and APIs (such as IMDb or TMDb) to fetch real-time data, ensuring up-to-date information and a rich user experience.
+
+## Technologies Used
+
+- **React**: Front-end library for building user interfaces.
+- **React Router Dom**: For navigation and routing within the app.
+- **Axios**: For making HTTP requests to fetch data from APIs.
+- **Date-fns**: For date and time manipulation and formatting.
+- **React Icons**: Library for easily adding icons to your React app.
+- **React Loader Spinner**: Component for displaying loading spinners.
+- **React Hot Toast**: Notification library for displaying toast messages.
+- **React Scroll To Top**: Component for scrolling to the top of the page.
+- **Swiper**: Touch slider library for creating image carousels and sliders.
+- **Clsx**: Utility for conditionally joining class names together.
+- **Modern Normalize**: CSS reset for consistent styling across browsers.
+
+## Development Dependencies
+
+- **Vite**: Front-end build tool and development server.
+- **Eslint**: JavaScript linter for identifying and fixing code errors.
+- **@types/react**: TypeScript type definitions for React.
+- **@vitejs/plugin-react**: Vite plugin for React integration.
+- **Eslint Plugins**:
+  - **eslint-plugin-react**: Eslint plugin for React-specific rules.
+  - **eslint-plugin-react-hooks**: Eslint plugin for React Hooks rules.
+  - **eslint-plugin-react-refresh**: Eslint plugin for React Refresh rules.
 
